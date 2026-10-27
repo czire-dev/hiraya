@@ -1,13 +1,13 @@
 # Student Consultation Appointment System
 
 A Flutter mobile app where students book consultations with instructors, track their
-queue position, and get notified. Built for [STI Campus / Department].
+queue position, and get notified. Built for STI Caloocan.
 
 **Current iteration:** Iteration 1 (about 30% of the full app) - the **Appointment & Queue subsystem**.
 **Data:** mock, in-memory (resets when the app restarts). No backend yet.
 **Targets:** Android emulator (main), Flutter web in a phone-sized window (backup).
 
-**Team lead:** [Name]  |  **Group:** [Group name]
+**Team lead:** Emanuel Czire C. Haber  |  **Group:** Hiraya
 
 ---
 

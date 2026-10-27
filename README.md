@@ -113,21 +113,66 @@ flutter analyze                                # must have no errors
 git push -u origin feature/<yourname>-<thing>
 ```
 
-### Commit messages
-Short and imperative: `Add queue chip`, `Fix slot lock on reschedule`. Not `update`, `fix`, `stuff`.
+### 15.2 Commit your changes
+
+Make small, focused commits with meaningful messages.
+
+```bash
+git add <files>
+git commit -m "feat: add student appointment booking"
+```
+
+Do not wait until the entire feature is finished before committing. Commit whenever you complete a logical piece of work.
+
+### 15.3 Commit message convention
+
+All team members must follow **Conventional Commits**.
+
+**Format:**
+
+```text
+<type>: <short description>
+```
+
+Use the following commit types:
+
+| Type | When to use it | Example |
+|---|---|---|
+| `feat` | Adds a new feature or capability | `feat: add student login screen` |
+| `fix` | Fixes incorrect or broken behavior | `fix: prevent duplicate slot bookings` |
+| `refactor` | Restructures code without intentionally changing behavior | `refactor: simplify booking repository logic` |
+| `test` | Adds or updates automated tests | `test: add booking validation tests` |
+| `docs` | Adds or updates documentation | `docs: update project README` |
+| `chore` | Performs general maintenance | `chore: remove unused dependencies` |
+| `style` | Changes formatting without changing program behavior | `style: format booking screen widgets` |
+| `perf` | Improves performance | `perf: optimize appointment filtering` |
+| `build` | Changes build configuration or dependency setup | `build: update Flutter package dependencies` |
+| `ci` | Changes continuous integration workflows | `ci: add automated Flutter analysis` |
 
 ### Pull request checklist
 Copy this into your PR description:
 
-```
+```bash
 ## What I built
+
+Describe the feature or fix.
+
 ## How to test it
+
+List the steps needed to verify the changes.
+
 ## Checklist
-- [ ] flutter analyze has no errors
-- [ ] The app runs and my screen works
-- [ ] I only edited files I own
-- [ ] I pulled and rebased from main before pushing
+
+- [ ] flutter analyze passes
+- [ ] flutter test passes
+- [ ] The app runs and the feature works
+- [ ] I edited only files I own or changes approved by the lead
+- [ ] I rebased against the latest main
+- [ ] No secrets or unnecessary files were committed
 ```
+
+The team lead reviews the code, verifies the changes, and merges approved pull requests using the agreed merge strategy.
+
 
 The lead reviews and merges (Squash and merge). Keep PRs small: one screen or feature each.
 
@@ -148,7 +193,7 @@ Stuck? `git rebase --abort` undoes the attempt, then ask the lead.
 
 ## 5. Rules of the team
 
-1. Only edit your own files (section 4).
+1. Only edit your own files.
 2. No direct pushes to `main`.
 3. `flutter analyze` must be clean before every PR.
 4. Small PRs, merged often (every 1-2 hours).

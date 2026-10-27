@@ -1,0 +1,73 @@
+// OWNER: Person 2 (Auth & roles)
+// Starter: demo login where you tap an account. Upgrade ideas: email/password
+// form with demo credentials, remember last user, nicer branding.
+
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../core/widgets.dart';
+import '../../models/app_user.dart';
+import '../../state/app_state.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final users = context.read<AppState>().repo.users;
+    final students = users.where((u) => u.role == UserRole.student);
+    final instructors = users.where((u) => u.role == UserRole.instructor);
+    final theme = Theme.of(context);
+
+    return Scaffold(
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(24),
+          children: [
+            const SizedBox(height: 24),
+            Icon(Icons.event_available, size: 64, color: theme.colorScheme.primary),
+            const SizedBox(height: 12),
+            Text(
+              'Student Consultation\nAppointment System',
+              textAlign: TextAlign.center,
+              style: theme.textTheme.headlineSmall
+                  ?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Demo login - pick an account',
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 24),
+            const SectionHeader('Students'),
+            ...students.map((u) => _UserTile(user: u)),
+            const SizedBox(height: 8),
+            const SectionHeader('Instructors'),
+            ...instructors.map((u) => _UserTile(user: u)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _UserTile extends StatelessWidget {
+  const _UserTile({required this.user});
+
+  final AppUser user;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      child: ListTile(
+        leading: CircleAvatar(child: Text(user.initials)),
+        title: Text(user.name),
+        subtitle: Text(user.department),
+        trailing: const Icon(Icons.chevron_right),
+        onTap: () => context.read<AppState>().login(user),
+      ),
+    );
+  }
+}

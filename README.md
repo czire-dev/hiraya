@@ -191,12 +191,15 @@ Stuck? `git rebase --abort` undoes the attempt, then ask the lead.
 
 ---
 
-## 5. Rules of the team
+## 5. Team collaboration rules
 
-1. Only edit your own files.
-2. No direct pushes to `main`.
-3. `flutter analyze` must be clean before every PR.
-4. Small PRs, merged often (every 1-2 hours).
-5. Stuck for more than 20 minutes? Ask in the group chat.
-6. Post one line in the chat when you open a PR and when you are blocked.
-7. After the feature freeze: bug fixes only.
+1. Work on assigned branches, not directly on `main`.
+2. Follow the commit message convention.
+3. Respect file ownership and obtain approval for shared-code changes.
+4. Keep pull requests focused and easy to review.
+5. Run `flutter analyze` and `flutter test` before submitting changes.
+6. Communicate when a pull request is opened or work becomes blocked.
+7. Coordinate changes to models, repository interfaces, application state, routing, and dependencies with the team lead.
+8. Merge only reviewed and verified pull requests.
+9. After the agreed feature freeze, prioritize bug fixes and stability.
+10. Do not commit passwords, API keys, access tokens, or production credentials.
